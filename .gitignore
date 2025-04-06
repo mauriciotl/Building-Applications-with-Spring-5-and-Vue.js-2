@@ -1,0 +1,57 @@
+# Maven build output
+/target/
+
+# Logs
+*.log
+*.log.*
+
+# Spring Boot specific
+spring.log
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# VS Code
+.vscode/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+bin/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Environment or secret files
+.env
+*.env
+
+# Build system
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+mvnw
+mvnw.cmd
+
+# Coverage / reports
+coverage/
+jacoco.exec
+surefire-reports/
+test-output/
+
+# Database
+*.h2.db
+*.mv.db
+*.db
+
+# Temporary files
+*.tmp
+*.swp
+*.swo

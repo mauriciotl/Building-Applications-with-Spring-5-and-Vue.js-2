@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Messages App</title>
+    <style>
+        body > div {width: 500px; margin: 0 auto;}
+        textarea {width: 100%;}
+        ul {padding: 0 15px;}
+    </style>
+</head>
+<body>
+<div id="app">
+    <ul id="messages-list">
+        <!-- Messages will be inserted here by JavaScript -->
+    </ul>
+    <form id="message-form">
+        <textarea id="new-message" placeholder="Leave a message"></textarea>
+        <div><button id="submit-button" type="submit">Add 01</button></div>
+    </form>
+    <p id="new-message-display">The newMessage is: </p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const app = {
+            messages: [],
+            newMessage: '',
+
+            init() {
+                this.form = document.getElementById('message-form');
+                this.textarea = document.getElementById('new-message');
+                this.messagesList = document.getElementById('messages-list');
+                this.messageDisplay = document.getElementById('new-message-display');
+                this.submitButton = document.getElementById('submit-button');
+
+                this.form.addEventListener('submit', this.addMessage.bind(this));
+                this.textarea.addEventListener('input', this.updateNewMessage.bind(this));
+
+                this.render();
+            },
+
+            updateNewMessage(e) {
+                this.newMessage = e.target.value;
+                this.updateButtonState();
+                this.messageDisplay.textContent = `The newMessage is: ${this.newMessage}`;
+            },
+
+            addDisabled() {
+                return this.messages.length >= 10 || this.newMessage.length > 50;
+            },
+
+            updateButtonState() {
+                this.submitButton.disabled = this.addDisabled();
+            },
+
+            addMessage(e) {
+                e.preventDefault();
+
+                if (!this.newMessage || this.addDisabled()) return;
+
+                this.messages.push({
+                    text: this.newMessage,
+                    createdAt: new Date()
+                });
+
+                this.newMessage = '';
+                this.textarea.value = '';
+                this.messageDisplay.textContent = 'The newMessage is: ';
+                this.updateButtonState();
+
+                this.renderMessages();
+            },
+
+            deleteMessage(index) {
+                this.messages.splice(index, 1);
+                this.renderMessages();
+            },
+
+            renderMessages() {
+                this.messagesList.innerHTML = '';
+
+                this.messages.forEach((message, index) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+              ${message.text} - ${message.createdAt}
+              <button data-index="${index}" class="delete-button">X</button>
+            `;
+                    this.messagesList.appendChild(li);
+                });
+
+                // Add event listeners to delete buttons
+                document.querySelectorAll('.delete-button').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.getAttribute('data-index'));
+                        this.deleteMessage(index);
+                    });
+                });
+            },
+
+            render() {
+                this.updateButtonState();
+                this.renderMessages();
+            }
+        };
+
+        app.init();
+    });
+</script>
+</body>
+</html>

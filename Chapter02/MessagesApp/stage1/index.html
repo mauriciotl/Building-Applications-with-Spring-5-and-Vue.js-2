@@ -20,8 +20,9 @@
     <form @submit.prevent="addMessage">
       <textarea v-model="newMessage" placeholder="Leave a message">        
       </textarea>
-      <div><button v-bind:disabled="addDisabled" type="submit">Add</button></div>
+      <div><button v-bind:disabled="addDisabled" type="submit">Add 01</button></div>
     </form>
+    <p>The newMessage is: {{newMessage}}</p>
   </div>
   <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
   <script>
