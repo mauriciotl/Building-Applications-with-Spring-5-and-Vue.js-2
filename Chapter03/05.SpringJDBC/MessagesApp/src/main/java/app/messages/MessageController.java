@@ -17,7 +17,7 @@ public class MessageController {
 
   @GetMapping("/welcome")
   public String welcome(Model model) {
-    model.addAttribute("message", "Hello, Welcome to Spring Boot!");
+    model.addAttribute("message", "Hello, Welcome to Spring Boot! Mau Testing!!");
     return "welcome";
   }
 

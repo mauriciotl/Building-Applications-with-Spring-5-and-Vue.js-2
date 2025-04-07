@@ -1,3 +1,5 @@
+# === Back-end: Java + Maven + Spring Boot ===
+
 # Maven build output
 /target/
 
@@ -55,3 +57,41 @@ test-output/
 *.tmp
 *.swp
 *.swo
+
+# other
+.sts4-cache
+
+# === Front-end: Vue.js ===
+
+# Node modules
+node_modules/
+
+# Build output (default Vue build)
+dist/
+build/
+
+# npm/Yarn lock files (optional, keep one)
+package-lock.json
+yarn.lock
+
+# Cache
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vue local config files
+*.local
+*.dev
+*.test
+
+# IDE configs (again, if working in separate folders)
+frontend/.idea/
+frontend/.vscode/
+frontend/.DS_Store
+
+# Optional: if using Vue CLI
+public/
+
+# Optional: if using Vite
+.vite/

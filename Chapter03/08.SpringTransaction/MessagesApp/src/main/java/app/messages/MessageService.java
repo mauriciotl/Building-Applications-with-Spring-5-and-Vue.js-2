@@ -18,7 +18,8 @@ public class MessageService {
   }
 
   @SecurityCheck
-  @Transactional(noRollbackFor = { UnsupportedOperationException.class })
+//  @Transactional(noRollbackFor = { UnsupportedOperationException.class })
+  @Transactional()
   public Message save(String text) {
     Message message = repository.saveMessage(new Message(text));
     log.debug("New message[id={}] saved", message.getId());
